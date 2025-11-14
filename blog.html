@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Insights from the Lab - Xpectre Labs</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+    <link rel="icon" type="image/png" href="favicon.png" sizes="32x32">
+    <script>
+        tailwind.config = {
+            darkMode: "class", 
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#F4C753", 
+                        "background-light": "#f8f7f6", 
+                        "background-dark": "#221d10"
+                    }, 
+                    fontFamily: {
+                        display: "Space Grotesk"
+                    }, 
+                    borderRadius: {
+                        DEFAULT: "0.25rem", 
+                        lg: "0.5rem", 
+                        xl: "0.75rem", 
+                        full: "9999px"
+                    }
+                }
+            }
+        };
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+        }
+        .article-card {
+            transition: all 0.3s ease;
+        }
+        .hidden-article {
+            display: none !important;
+        }
+        .active-filter {
+            background-color: rgb(244 199 83 / 0.2) !important;
+            color: #F4C753 !important;
+        }
+    </style>
+</head>
+<body class="font-display bg-background-light dark:bg-background-dark">
+    <div class="relative flex min-h-screen w-full flex-col group/design-root overflow-x-hidden">
+        <div class="layout-container flex h-full grow flex-col">
+            <div class="flex flex-1 justify-center py-5 md:px-10 lg:px-40">
+                <div class="layout-content-container flex flex-col max-w-[960px] flex-1">
+                    <header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-white/10 px-4 sm:px-10 py-3">
+                        <div class="flex items-center gap-4 text-white">
+                            <div class="size-6 text-primary">
+                                <img width="30px" src="./img/logoH.png" alt="Xpectre Labs Logo" />
+                            </div>
+                            <h2 class="text-white text-lg font-bold leading-tight tracking-[-0.015em]">Xpectre Labs</h2>
+                        </div>
+                        <div class="hidden md:flex flex-1 justify-end gap-8">
+                            <div class="flex items-center gap-9">
+                                <a class="text-white text-sm font-medium leading-normal hover:text-primary transition-colors" href="index.html">Home</a>
+                                <a class="text-white text-sm font-medium leading-normal hover:text-primary transition-colors" href="index.html#services">Services</a>
+                                <a class="text-white text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">About</a>
+                                <a class="text-primary text-sm font-bold leading-normal" href="#">Labs</a>
+                                <a class="text-white text-sm font-medium leading-normal hover:text-primary transition-colors" href="events.html">Events</a>
+                            </div>
+                            <a href="index.html#contact-form" class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-background-dark text-sm font-bold leading-normal tracking-[0.015em] hover:opacity-90 transition-opacity">
+                                <span class="truncate">Get a Quote</span>
+                            </a>
+                        </div>
+                    </header>
+                    <section class="flex flex-col gap-6 p-4 sm:p-10 text-center sm:text-left">
+                        <div class="flex w-full flex-col items-center sm:items-start gap-3">
+                            <h1 class="text-white text-4xl sm:text-5xl font-black leading-tight tracking-[-0.033em]">Insights from the Lab</h1>
+                            <p class="text-white/70 text-base font-normal leading-normal max-w-lg">Sharing knowledge and innovation from the experts at Xpectre Labs.</p>
+                        </div>
+                        <div class="relative w-full max-w-lg mx-auto sm:mx-0">
+                            <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-white/50 text-xl">search</span>
+                            <input id="search-input" class="w-full h-12 pl-10 pr-4 rounded-lg bg-white/5 text-white placeholder:text-white/50 border border-white/10 focus:border-primary focus:ring-primary focus:ring-opacity-50 transition-colors duration-300" placeholder="Search by keyword, topic, or author..." type="search"/>
+                        </div>
+                    </section>
+                    <section class="flex flex-col sm:flex-row gap-4 justify-between items-center p-4 border-y border-white/10">
+                        <div class="flex gap-2 flex-wrap justify-center sm:justify-start">
+                            <button class="filter-btn active-filter flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-primary/20 px-4 text-primary text-sm font-medium leading-normal" data-category="all">All</button>
+                            <button class="filter-btn flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-white/10 hover:bg-white/20 px-4 text-white/80 hover:text-white transition-colors text-sm font-medium leading-normal" data-category="AI">AI</button>
+                            <button class="filter-btn flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-white/10 hover:bg-white/20 px-4 text-white/80 hover:text-white transition-colors text-sm font-medium leading-normal" data-category="3D Modeling">3D Modeling</button>
+                            <button class="filter-btn flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-white/10 hover:bg-white/20 px-4 text-white/80 hover:text-white transition-colors text-sm font-medium leading-normal" data-category="Innovation">Innovation</button>
+                            <button class="filter-btn flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-white/10 hover:bg-white/20 px-4 text-white/80 hover:text-white transition-colors text-sm font-medium leading-normal" data-category="Company News">Company News</button>
+                        </div>
+                        <div class="relative">
+                            <select id="sort-select" class="flex h-9 items-center justify-center gap-x-2 rounded-lg bg-white/10 hover:bg-white/20 pl-4 pr-10 text-white/80 hover:text-white transition-colors appearance-none cursor-pointer">
+                                <option value="newest">Sort by: Newest</option>
+                                <option value="oldest">Sort by: Oldest</option>
+                            </select>
+                            <span class="material-symbols-outlined absolute right-2 top-1/2 -translate-y-1/2 text-white/50 pointer-events-none">expand_more</span>
+                        </div>
+                    </section>
+                    <main id="articles-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 p-4 sm:p-10">
+                        <!-- Article 1 -->
+                        <div class="article-card flex flex-col gap-3 rounded-lg bg-white/5 p-3 group hover:bg-white/10 transition-colors cursor-pointer" data-category="AI" data-date="2023-10-26" data-title="The Future of Generative AI in 3D Design">
+                            <div class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-lg overflow-hidden">
+                                <div class="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-300" data-alt="Abstract yellow and black geometric patterns representing AI" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCkt9145hu61NJl1sE_YR7HuPSyYMjQXKeM7iws1jYZb2M2LA_gcDDprKFljj1ggFyQUzWCyTuDZREqkT1vf0s7JIu9LrqJtk5GZJEbRv3m19eDYBtyzjixVc_cIsmmpPfC-Eo5oCf0SNIH--T9TasIxMV9FV5zHB4Ko0nasQ4PP1yOj-Gw9tcoF-4fcjiQKVGR9Hsw9W7_y2DSRQAzxKK4RFK1dsEPUk7hlI4phJ9ssIEfpwqFbmfy7gBroWzTrrTZcDNq_4OE1qM");'></div>
+                            </div>
+                            <div class="flex flex-col gap-2">
+                                <p class="text-primary text-xs font-bold uppercase">AI</p>
+                                <p class="text-white text-lg font-medium leading-normal">The Future of Generative AI in 3D Design</p>
+                                <p class="text-white/60 text-sm font-normal leading-normal">Explore how generative AI is revolutionizing the creation of complex 3D models and environments.</p>
+                                <p class="text-white/50 text-xs font-normal leading-normal">John Doe | Oct 26, 2023</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Article 2 -->
+                        <div class="article-card flex flex-col gap-3 rounded-lg bg-white/5 p-3 group hover:bg-white/10 transition-colors cursor-pointer" data-category="3D Modeling" data-date="2023-10-22" data-title="Optimizing Neural Networks for Real-Time Rendering">
+                            <div class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-lg overflow-hidden">
+                                <div class="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-300" data-alt="Glowing neural network visualization" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC-yZEQIStUBjkLbJuew0qKcehaX-OhhZ_hWxqA-UtzXKpwf-xUsBLtQ3culPO_EUW7wH88SsGBf7OWeey7772RXj3vyAWvUylWPodUkKFq8yRAxLQvzngaDxlMKDI7y45zUAglbjisGfO0dAHVV6iuc-0R8guuVwyReGtuxzF3Vj49t6Hg2z5jrrG8u0EGnwGtA609Hst8469jY-j8PMZB9E49SPL9zqfC_dGyv32iOjRfrEfZ2zYjUsRCENwhFFXwUcPqlP7MoUo");'></div>
+                            </div>
+                            <div class="flex flex-col gap-2">
+                                <p class="text-primary text-xs font-bold uppercase">3D Modeling</p>
+                                <p class="text-white text-lg font-medium leading-normal">Optimizing Neural Networks for Real-Time Rendering</p>
+                                <p class="text-white/60 text-sm font-normal leading-normal">A technical breakdown of our methods for achieving high-fidelity graphics without compromising performance.</p>
+                                <p class="text-white/50 text-xs font-normal leading-normal">Jane Smith | Oct 22, 2023</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Article 3 -->
+                        <div class="article-card flex flex-col gap-3 rounded-lg bg-white/5 p-3 group hover:bg-white/10 transition-colors cursor-pointer" data-category="3D Modeling" data-date="2023-10-18" data-title="A Deep Dive into Volumetric Capture Technology">
+                            <div class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-lg overflow-hidden">
+                                <div class="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-300" data-alt="Futuristic volumetric capture studio with lights" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCPX4NOFOs-GqbExS0183tCj5SXmPSv67UlZ4-jhn0ORURce5MNqvFD507NtUzlM02YpeFuPKHINWVT1DrDTsR3VZNouJHRqodE3_mQON1PQNYKHn7EF2wsklmtfGhzqxB0WixNzoejWYsGgaIQkNckDQ2LrWmU81_bibFZuD_1zwadif-dKl4qxyLl2N9qy5tro-MezInzuRtOAwMZLXSpZk-Q47DdPuUFteX6HRIeBS55t3kUsw4zzCDyLq9WtpqJYMU1j8KuBwE");'></div>
+                            </div>
+                            <div class="flex flex-col gap-2">
+                                <p class="text-primary text-xs font-bold uppercase">3D Modeling</p>
+                                <p class="text-white text-lg font-medium leading-normal">A Deep Dive into Volumetric Capture Technology</p>
+                                <p class="text-white/60 text-sm font-normal leading-normal">Learn about the process and potential of capturing and recreating spaces and objects in three dimensions.</p>
+                                <p class="text-white/50 text-xs font-normal leading-normal">Alex Johnson | Oct 18, 2023</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Article 4 -->
+                        <div class="article-card flex flex-col gap-3 rounded-lg bg-white/5 p-3 group hover:bg-white/10 transition-colors cursor-pointer" data-category="Innovation" data-date="2023-10-15" data-title="Xpectre Labs' Latest Breakthrough in AI-Powered Analytics">
+                            <div class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-lg overflow-hidden">
+                                <div class="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-300" data-alt="Data analytics dashboard with graphs and charts on a screen" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDvpnL4OdMiBMDEUmhsCv8K8gPNleyxCpEMLXMQCInnQhrvadSTdwvA5TLzX4meLWKAR_tk0twz5XiViWm3eisklSR-p6gkbFvgD3P2QHrSndJQoyBBJXdYLQpiqu0G_szcLFsEv3gSAyl2-43Cyd7LKEZao9jkmHklpZAwzXE_zNxLvXM0B0GivmtPIJkInofAgguYQGxAo4OP03KY33o8b1slO2TE74XaD72sH9eD6d9f3J4TKV1J8aSZaaziHOoMRdUiuvdP0vU");'></div>
+                            </div>
+                            <div class="flex flex-col gap-2">
+                                <p class="text-primary text-xs font-bold uppercase">Innovation</p>
+                                <p class="text-white text-lg font-medium leading-normal">Xpectre Labs' Latest Breakthrough in AI-Powered Analytics</p>
+                                <p class="text-white/60 text-sm font-normal leading-normal">Unpacking our newest platform that leverages machine learning to provide actionable business insights.</p>
+                                <p class="text-white/50 text-xs font-normal leading-normal">Emily White | Oct 15, 2023</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Article 5 -->
+                        <div class="article-card flex flex-col gap-3 rounded-lg bg-white/5 p-3 group hover:bg-white/10 transition-colors cursor-pointer" data-category="Company News" data-date="2023-10-11" data-title="Case Study: How We Transformed Retail with 3D Visualization">
+                            <div class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-lg overflow-hidden">
+                                <div class="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-300" data-alt="Immersive 3D visualization of a retail store on a tablet" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBWwHr_9OHpyeVR2qvgWfnkKwIDLFoW2iwWOYvbR04d4uBIOxDeKqDjlC1QC1fqMNmoq8Ekq3EwoQB-WAC-iUm5MYJQQJy1jOKOVqbH6earYC2vjOqWEUjAzL-WIl5z4Cj7ZvqMZ4-xcyf8sLWtmgi32YjhC3hhBVPTk0QBQVp6TcRSGCiYw_E-EXcRhedh1OymVSUIJ5BkQJrWcFIv4DDr8SZ2EJqi7BKV7nktInwKTP9XUyYbuqLnxjSutxmE03lg-tDR_19FZLw");'></div>
+                            </div>
+                            <div class="flex flex-col gap-2">
+                                <p class="text-primary text-xs font-bold uppercase">Company News</p>
+                                <p class="text-white text-lg font-medium leading-normal">Case Study: How We Transformed Retail with 3D Visualization</p>
+                                <p class="text-white/60 text-sm font-normal leading-normal">Discover how our 3D solutions helped a major brand create immersive online shopping experiences.</p>
+                                <p class="text-white/50 text-xs font-normal leading-normal">Chris Green | Oct 11, 2023</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Article 6 -->
+                        <div class="article-card flex flex-col gap-3 rounded-lg bg-white/5 p-3 group hover:bg-white/10 transition-colors cursor-pointer" data-category="AI" data-date="2023-10-07" data-title="The Ethics of AI: Navigating New Frontiers">
+                            <div class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-lg overflow-hidden">
+                                <div class="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-300" data-alt="Abstract representation of ethical decision paths" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC31hT0oVJMF5uOwzwzadgEPbyIgcJ7gghJEEZ95nBfHtqOuqYYxZDWLOVK2nZm_nx8IYf7jGHZdJ-Cqe3pgPRF4Kh7TqI8fgBAV4NYy-jfvfK3jCxeIacGObWIHMzCgZaOjvXswa79L_bG59Um0U3_vvyHjQdsIvQ5mJ6uosIRkrza_cVJcA724YJkZUj8Wuxs6kUiDEfhf4-E4xwDDPXFwWRMAEpPX1MThngs9w1wx8pYJc5J-FzNp_2Cg3Fjrf7OXDU9J1eBHVE");'></div>
+                            </div>
+                            <div class="flex flex-col gap-2">
+                                <p class="text-primary text-xs font-bold uppercase">AI</p>
+                                <p class="text-white text-lg font-medium leading-normal">The Ethics of AI: Navigating New Frontiers</p>
+                                <p class="text-white/60 text-sm font-normal leading-normal">A thoughtful discussion on the responsibilities and challenges that come with developing powerful AI systems.</p>
+                                <p class="text-white/50 text-xs font-normal leading-normal">Sarah Brown | Oct 07, 2023</p>
+                            </div>
+                        </div>
+                    </main>
+                    <nav class="flex items-center justify-center p-4 sm:p-10">
+                        <a class="flex size-10 items-center justify-center text-white/50 hover:text-white transition-colors" href="#">
+                            <span class="material-symbols-outlined text-xl">chevron_left</span>
+                        </a>
+                        <a class="text-sm font-bold leading-normal tracking-[0.015em] flex size-10 items-center justify-center text-background-dark rounded-full bg-primary" href="#">1</a>
+                        <a class="text-sm font-normal leading-normal flex size-10 items-center justify-center text-white/80 rounded-full hover:bg-white/10 transition-colors" href="#">2</a>
+                        <a class="text-sm font-normal leading-normal flex size-10 items-center justify-center text-white/80 rounded-full hover:bg-white/10 transition-colors" href="#">3</a>
+                        <span class="text-sm font-normal leading-normal flex size-10 items-center justify-center text-white/50 rounded-full">...</span>
+                        <a class="text-sm font-normal leading-normal flex size-10 items-center justify-center text-white/80 rounded-full hover:bg-white/10 transition-colors" href="#">8</a>
+                        <a class="text-sm font-normal leading-normal flex size-10 items-center justify-center text-white/80 rounded-full hover:bg-white/10 transition-colors" href="#">9</a>
+                        <a class="text-sm font-normal leading-normal flex size-10 items-center justify-center text-white/80 rounded-full hover:bg-white/10 transition-colors" href="#">10</a>
+                        <a class="flex size-10 items-center justify-center text-white/50 hover:text-white transition-colors" href="#">
+                            <span class="material-symbols-outlined text-xl">chevron_right</span>
+                        </a>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM loaded, initializing blog filters...');
+            
+            // Get DOM elements
+            const searchInput = document.getElementById('search-input');
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const sortSelect = document.getElementById('sort-select');
+            const articleCards = document.querySelectorAll('.article-card');
+            const articlesContainer = document.getElementById('articles-container');
+            
+            // Debug: Check if elements are found
+            console.log('Search input:', searchInput);
+            console.log('Filter buttons:', filterButtons.length);
+            console.log('Sort select:', sortSelect);
+            console.log('Article cards found:', articleCards.length);
+            
+            // Current filter state
+            let currentCategory = 'all';
+            let currentSearchTerm = '';
+            let currentSort = 'newest';
+            
+            // Add event listeners for filtering
+            searchInput.addEventListener('input', function() {
+                currentSearchTerm = this.value.toLowerCase();
+                filterArticles();
+            });
+            
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    filterButtons.forEach(btn => btn.classList.remove('active-filter'));
+                    
+                    // Add active class to clicked button
+                    this.classList.add('active-filter');
+                    
+                    // Update current category
+                    currentCategory = this.getAttribute('data-category');
+                    filterArticles();
+                });
+            });
+            
+            sortSelect.addEventListener('change', function() {
+                currentSort = this.value;
+                sortArticles();
+            });
+            
+            // Filter articles function
+            function filterArticles() {
+                console.log('Filtering articles...');
+                console.log('Category:', currentCategory);
+                console.log('Search term:', currentSearchTerm);
+                
+                let visibleCount = 0;
+                
+                articleCards.forEach(card => {
+                    const category = card.getAttribute('data-category');
+                    const title = card.getAttribute('data-title').toLowerCase();
+                    const content = card.textContent.toLowerCase();
+                    
+                    // Check if card matches category
+                    const matchesCategory = currentCategory === 'all' || category === currentCategory;
+                    
+                    // Check if card matches search term
+                    const matchesSearch = currentSearchTerm === '' || 
+                                         title.includes(currentSearchTerm) ||
+                                         content.includes(currentSearchTerm);
+                    
+                    // Show or hide card based on filters
+                    if (matchesCategory && matchesSearch) {
+                        card.classList.remove('hidden-article');
+                        visibleCount++;
+                    } else {
+                        card.classList.add('hidden-article');
+                    }
+                });
+                
+                console.log(`Total visible articles: ${visibleCount}`);
+                
+                // Sort articles after filtering
+                sortArticles();
+                
+                // Show no results message if needed
+                showNoResultsMessage(visibleCount === 0);
+            }
+            
+            // Sort articles function
+            function sortArticles() {
+                console.log('Sorting articles...');
+                
+                // Get visible articles
+                const visibleArticles = Array.from(articleCards).filter(card => 
+                    !card.classList.contains('hidden-article')
+                );
+                
+                // Sort articles based on current sort option
+                visibleArticles.sort((a, b) => {
+                    const dateA = new Date(a.getAttribute('data-date'));
+                    const dateB = new Date(b.getAttribute('data-date'));
+                    
+                    if (currentSort === 'newest') {
+                        return dateB - dateA; // Newest first
+                    } else {
+                        return dateA - dateB; // Oldest first
+                    }
+                });
+                
+                // Reorder articles in the container
+                articlesContainer.innerHTML = '';
+                visibleArticles.forEach(article => {
+                    articlesContainer.appendChild(article);
+                });
+                
+                console.log(`Sorted ${visibleArticles.length} articles by ${currentSort}`);
+            }
+            
+            // Function to show/hide no results message
+            function showNoResultsMessage(show) {
+                // Remove existing message if any
+                const existingMessage = document.getElementById('no-results-message');
+                if (existingMessage) {
+                    existingMessage.remove();
+                }
+                
+                if (show) {
+                    const message = document.createElement('div');
+                    message.id = 'no-results-message';
+                    message.className = 'col-span-full text-center py-8';
+                    message.innerHTML = `
+                        <p class="text-[#ccc28e] text-lg font-medium">No articles match your search criteria.</p>
+                        <p class="text-[#ccc28e] text-sm mt-2">Try adjusting your filters or search term.</p>
+                    `;
+                    
+                    articlesContainer.appendChild(message);
+                }
+            }
+            
+            // Initialize filters on page load
+            filterArticles();
+        });
+    </script>
+</body>
+</html>

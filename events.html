@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Xpectre Labs - Upcoming Events</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+    <link rel="icon" type="image/png" href="favicon.png" sizes="32x32">
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            font-size: 20px;
+        }
+        .event-card {
+            transition: all 0.3s ease;
+        }
+        .hidden-event {
+            display: none !important;
+        }
+        .visible-event {
+            display: flex;
+        }
+    </style>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#F4C753",
+                        "background-light": "#f8f7f6",
+                        "background-dark": "#221d10"
+                    },
+                    fontFamily: {
+                        display: "Space Grotesk"
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.25rem",
+                        lg: "0.5rem",
+                        xl: "0.75rem",
+                        full: "9999px"
+                    }
+                }
+            }
+        };
+    </script>
+</head>
+<body class="font-display bg-background-light dark:bg-background-dark">
+    <div class="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden">
+        <div class="layout-container flex h-full grow flex-col">
+            <div class="px-4 sm:px-8 md:px-16 lg:px-24 xl:px-40 flex flex-1 justify-center py-5">
+                <div class="layout-content-container flex flex-col w-full max-w-[1200px] flex-1">
+                    <header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-primary/20 px-4 sm:px-6 lg:px-10 py-3">
+                        <div class="flex items-center gap-4 text-white">
+                            <div class="size-6 text-primary">
+                                <img width="30px" src="./img/logoH.png" alt="Xpectre Labs Logo" />
+                            </div>
+                            <h2 class="text-white text-lg font-bold leading-tight tracking-[-0.015em]">Xpectre Labs</h2>
+                        </div>
+                        <nav class="hidden md:flex flex-1 justify-end items-center gap-8">
+                            <div class="flex items-center gap-9">
+                                <a class="text-white/80 hover:text-white transition-colors text-sm font-medium leading-normal" href="index.html">Home</a>
+                                <a class="text-white/80 hover:text-white transition-colors text-sm font-medium leading-normal" href="index.html#services">Services</a>
+                                <a class="text-white/80 hover:text-white transition-colors text-sm font-medium leading-normal" href="#">About</a>
+                                <a class="text-white/80 hover:text-white transition-colors text-sm font-medium leading-normal" href="blog.html">Lab</a>
+                                <a class="text-primary text-sm font-bold leading-normal relative" href="#">
+                                    Events
+                                    <span class="absolute -bottom-1 left-0 w-full h-0.5 bg-primary"></span>
+                                </a>
+                            </div>
+                            <a href="index.html#contact-form" class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-background-dark text-sm font-bold leading-normal tracking-[0.015em] hover:bg-yellow-400 transition-colors">
+                                <span class="truncate">Contact Us</span>
+                            </a>
+                        </nav>
+                        <button class="md:hidden text-white">
+                            <span class="material-symbols-outlined !text-3xl">menu</span>
+                        </button>
+                    </header>
+                    <main class="flex-1">
+                        <div class="flex flex-wrap justify-between gap-3 p-4 pt-16 pb-8 text-center">
+                            <div class="flex w-full flex-col items-center gap-4">
+                                <p class="text-white text-4xl sm:text-5xl font-black leading-tight tracking-[-0.033em]">Upcoming Events</p>
+                                <p class="text-[#ccc28e] text-base font-normal leading-normal max-w-xl">Join us at our next event and explore the future of AI and 3D innovation. We host and participate in events that push the boundaries of technology.</p>
+                            </div>
+                        </div>
+                        <div class="p-4 mb-8">
+                            <div class="flex flex-col gap-4 p-4 bg-white/5 rounded-xl border border-white/10">
+                                <div class="flex flex-col md:flex-row items-center gap-4">
+                                    <div class="relative w-full md:flex-1">
+                                        <span class="material-symbols-outlined pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-white/50">search</span>
+                                        <input id="search-input" class="w-full appearance-none bg-background-dark border border-white/20 text-white rounded-lg h-10 pl-10 pr-4 focus:ring-primary focus:border-primary" placeholder="Search events by keyword..." type="text"/>
+                                    </div>
+                                    <div class="flex flex-col sm:flex-row w-full md:w-auto items-center gap-4">
+                                        <div class="relative flex-1 sm:flex-none sm:w-48">
+                                            <select id="type-select" class="w-full appearance-none bg-background-dark border border-white/20 text-white rounded-lg h-10 px-4 pr-10 focus:ring-primary focus:border-primary">
+                                                <option value="all">All Event Types</option>
+                                                <option value="Conference">Conference</option>
+                                                <option value="Workshop">Workshop</option>
+                                                <option value="Webinar">Webinar</option>
+                                                <option value="Meetup">Meetup</option>
+                                            </select>
+                                            <span class="material-symbols-outlined pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-white/50">expand_more</span>
+                                        </div>
+                                        <div class="relative flex-1 sm:flex-none sm:w-48">
+                                            <select id="date-select" class="w-full appearance-none bg-background-dark border border-white/20 text-white rounded-lg h-10 px-4 pr-10 focus:ring-primary focus:border-primary">
+                                                <option value="all">All Dates</option>
+                                                <option value="this-month">This Month</option>
+                                                <option value="next-quarter">Next Quarter</option>
+                                                <option value="this-year">This Year</option>
+                                            </select>
+                                            <span class="material-symbols-outlined pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-white/50">expand_more</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="events-container" class="grid grid-cols-1 md:grid-cols-2 gap-6 p-4">
+                            <!-- Event 1 -->
+                            <div class="event-card flex flex-col gap-4 p-6 bg-white/5 rounded-xl border border-white/10 hover:border-primary/50 hover:shadow-2xl hover:shadow-primary/10 transition-all duration-300 transform hover:-translate-y-1" data-title="AI Innovation Summit 2024" data-type="Conference" data-date="2024-10-28">
+                                <div class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-lg" data-alt="Abstract vibrant geometric shapes representing AI innovation" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCQU8QS9NoYxSnMmsLcVr7fnTXP8kWAmDN9VmIFEC4zM4jdCwVN_qU2-U_us02soQ79DvUmqzG-484NjfDCE2_v3hXJQdi8NZl-H17ji5J1bkLcoi954uUfkHQj-jolZmb_ME_fnxI4gt1Fr8JV2LsCYxrqBqek7d0idSD07bXXgXKOoXbGzh-cXNuNUacJr7yFqrv911CJhD3DDxWMZ2pcNA4LNG5tLFF-2h9yK6pI39k1qDGhX-ewLEtIxZ8_Z3sJLVONe0SQAvE");'></div>
+                                <div class="flex flex-col gap-4 flex-1">
+                                    <div class="flex items-center gap-2">
+                                        <span class="inline-block px-3 py-1 text-xs font-bold text-background-dark bg-primary rounded-full">OCT 28, 2024</span>
+                                    </div>
+                                    <h3 class="text-white text-xl font-medium leading-normal">AI Innovation Summit 2024</h3>
+                                    <div class="flex items-center gap-2 text-[#ccc28e]">
+                                        <span class="material-symbols-outlined">location_on</span>
+                                        <p class="text-sm font-normal leading-normal">San Francisco, CA</p>
+                                    </div>
+                                    <p class="text-[#ccc28e] text-sm font-normal leading-normal flex-1">
+                                        Join industry leaders and innovators to explore the cutting edge of artificial intelligence and its real-world applications.
+                                    </p>
+                                </div>
+                                <div class="flex flex-col sm:flex-row gap-3 pt-2">
+                                    <button class="w-full sm:w-auto flex-1 cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-transparent text-white ring-1 ring-white/20 hover:bg-white/10 transition-colors text-sm font-bold leading-normal tracking-[0.015em] flex gap-2">
+                                        <span class="material-symbols-outlined">event</span>
+                                        <span class="truncate">Add to Calendar</span>
+                                    </button>
+                                    <button class="w-full sm:w-auto flex-1 cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-transparent text-white ring-1 ring-white/20 hover:bg-white/10 transition-colors text-sm font-bold leading-normal tracking-[0.015em]">
+                                        <span class="truncate">Learn More</span>
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <!-- Event 2 -->
+                            <div class="event-card flex flex-col gap-4 p-6 bg-white/5 rounded-xl border border-white/10 hover:border-primary/50 hover:shadow-2xl hover:shadow-primary/10 transition-all duration-300 transform hover:-translate-y-1" data-title="The Future of 3D Rendering" data-type="Workshop" data-date="2024-11-15">
+                                <div class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-lg" data-alt="A 3D wireframe render of a complex structure, glowing blue" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBll1YdKuBJ96SIlk-RAta3Oh9gPfrcFjVFU8xhboVd1COXuE-RzajjBZvBZe13B3Qgyfp-ObovOwejqsOXWkp89V96i_SvBdsUGcX038wfy26hkfA2NpiLAMMASYHpluYsBz2Bv4BGq_S0-ceKvQhwr2bDWVo7pUYJvxHEAL756Nso87pSK5eWB_wqGom5oZBXPCZ-8qdHRejkrXXxS1OAjLWLYYKtpynH_N_Qj4B7y6gLxRZN-Cg-H9XVimOCnTTmau8pveUjJAw");'></div>
+                                <div class="flex flex-col gap-4 flex-1">
+                                    <div class="flex items-center gap-2">
+                                        <span class="inline-block px-3 py-1 text-xs font-bold text-background-dark bg-primary rounded-full">NOV 15, 2024</span>
+                                    </div>
+                                    <h3 class="text-white text-xl font-medium leading-normal">The Future of 3D Rendering</h3>
+                                    <div class="flex items-center gap-2 text-[#ccc28e]">
+                                        <span class="material-symbols-outlined">videocam</span>
+                                        <p class="text-sm font-normal leading-normal">Virtual</p>
+                                    </div>
+                                    <p class="text-[#ccc28e] text-sm font-normal leading-normal flex-1">
+                                        A deep dive into the latest real-time rendering techniques that are revolutionizing digital experiences. Hosted by our lead engineers.
+                                    </p>
+                                </div>
+                                <div class="flex flex-col sm:flex-row gap-3 pt-2">
+                                    <button class="w-full sm:w-auto flex-1 cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-transparent text-white ring-1 ring-white/20 hover:bg-white/10 transition-colors text-sm font-bold leading-normal tracking-[0.015em] flex gap-2">
+                                        <span class="material-symbols-outlined">event</span>
+                                        <span class="truncate">Add to Calendar</span>
+                                    </button>
+                                    <button class="w-full sm:w-auto flex-1 cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-transparent text-white ring-1 ring-white/20 hover:bg-white/10 transition-colors text-sm font-bold leading-normal tracking-[0.015em]">
+                                        <span class="truncate">Learn More</span>
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <!-- Event 3 -->
+                            <div class="event-card flex flex-col gap-4 p-6 bg-white/5 rounded-xl border border-white/10 hover:border-primary/50 hover:shadow-2xl hover:shadow-primary/10 transition-all duration-300 transform hover:-translate-y-1" data-title="Keynote at TechCon Global" data-type="Conference" data-date="2024-11-22">
+                                <div class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-lg" data-alt="A large conference hall with an audience watching a speaker on stage" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuB0WooHDrw56fDljVFMznx1RkzS8bQOmK3dPNjHvdHi_9ijHBYPaHG5JyTFp1LLYzy6GUnzusya2PKQnWaMXbaQRmZ22xQdwHn5939qvEt_nc30-EKMnvlk6HQ02FM_QM-7Z3Sgcu1QxqtcZ9KwpUByB0ytEb8ibx1S7_mA02f41KHSwe7tVKb0Jk_7UI3E9HOi37tjf6z2Hq8lf8frGHfbxKLCNeYrxPlFqhqwy_k8QcPoQUyt2dHX6ZlavfQqjpYdrTCEyTl_lc4");'></div>
+                                <div class="flex flex-col gap-4 flex-1">
+                                    <div class="flex items-center gap-2">
+                                        <span class="inline-block px-3 py-1 text-xs font-bold text-background-dark bg-primary rounded-full">NOV 22, 2024</span>
+                                    </div>
+                                    <h3 class="text-white text-xl font-medium leading-normal">Keynote at TechCon Global</h3>
+                                    <div class="flex items-center gap-2 text-[#ccc28e]">
+                                        <span class="material-symbols-outlined">location_on</span>
+                                        <p class="text-sm font-normal leading-normal">London, UK</p>
+                                    </div>
+                                    <p class="text-[#ccc28e] text-sm font-normal leading-normal flex-1">
+                                        Our CEO will be delivering a keynote on the convergence of AI and spatial computing. Don't miss this insightful session.
+                                    </p>
+                                </div>
+                                <div class="flex flex-col sm:flex-row gap-3 pt-2">
+                                    <button class="w-full sm:w-auto flex-1 cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-transparent text-white ring-1 ring-white/20 hover:bg-white/10 transition-colors text-sm font-bold leading-normal tracking-[0.015em] flex gap-2">
+                                        <span class="material-symbols-outlined">event</span>
+                                        <span class="truncate">Add to Calendar</span>
+                                    </button>
+                                    <button class="w-full sm:w-auto flex-1 cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-transparent text-white ring-1 ring-white/20 hover:bg-white/10 transition-colors text-sm font-bold leading-normal tracking-[0.015em]">
+                                        <span class="truncate">Learn More</span>
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <!-- Event 4 -->
+                            <div class="event-card flex flex-col gap-4 p-6 bg-white/5 rounded-xl border border-white/10 hover:border-primary/50 hover:shadow-2xl hover:shadow-primary/10 transition-all duration-300 transform hover:-translate-y-1" data-title="Xpectre Labs Dev Meetup" data-type="Meetup" data-date="2024-12-05">
+                                <div class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-lg" data-alt="A casual office environment with developers collaborating around a table" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuARpwDVDZVD191aQ3gIafu2zINzjIa2peTRMdtL4YEwFAkMaphYGsS0Jei9Eovo6pJXf9glF7ZTbDEqQ2Vfvtjvw7wrkEFwzazUXwN36IjSpYI6JMe4224l123SKYrUakJ7NpgWw3A8rQUMYmQyHcnSrr6SPBuwhMsuNVR4bnZfdu7LDUIjqKIRHm7eUlWM2I_dnKn85f0096UfuO7_I_gGdEk0xPzQwkk1M_2eS0bI6N4DVCKrOhEoYcJk36uv-RnGDhsz2wBw2E4");'></div>
+                                <div class="flex flex-col gap-4 flex-1">
+                                    <div class="flex items-center gap-2">
+                                        <span class="inline-block px-3 py-1 text-xs font-bold text-background-dark bg-primary rounded-full">DEC 05, 2024</span>
+                                    </div>
+                                    <h3 class="text-white text-xl font-medium leading-normal">Xpectre Labs Dev Meetup</h3>
+                                    <div class="flex items-center gap-2 text-[#ccc28e]">
+                                        <span class="material-symbols-outlined">location_on</span>
+                                        <p class="text-sm font-normal leading-normal">Austin, TX</p>
+                                    </div>
+                                    <p class="text-[#ccc28e] text-sm font-normal leading-normal flex-1">
+                                        Connect with fellow developers, share your projects, and learn about our latest open-source tools. Food and drinks provided.
+                                    </p>
+                                </div>
+                                <div class="flex flex-col sm:flex-row gap-3 pt-2">
+                                    <button class="w-full sm:w-auto flex-1 cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-transparent text-white ring-1 ring-white/20 hover:bg-white/10 transition-colors text-sm font-bold leading-normal tracking-[0.015em] flex gap-2">
+                                        <span class="material-symbols-outlined">event</span>
+                                        <span class="truncate">Add to Calendar</span>
+                                    </button>
+                                    <button class="w-full sm:w-auto flex-1 cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-transparent text-white ring-1 ring-white/20 hover:bg-white/10 transition-colors text-sm font-bold leading-normal tracking-[0.015em]">
+                                        <span class="truncate">Learn More</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </main>
+                    <footer class="flex flex-col gap-8 px-5 py-16 text-center border-t border-solid border-primary/20 mt-16">
+                        <div class="flex flex-wrap items-center justify-center gap-x-8 gap-y-4">
+                            <a class="text-[#ccc28e] hover:text-white transition-colors text-sm font-normal leading-normal" href="#">Privacy Policy</a>
+                            <a class="text-[#ccc28e] hover:text-white transition-colors text-sm font-normal leading-normal" href="#">Terms of Service</a>
+                            <a class="text-[#ccc28e] hover:text-white transition-colors text-sm font-normal leading-normal" href="index.html#contact-form">Contact</a>
+                            <a class="text-[#ccc28e] hover:text-white transition-colors text-sm font-normal leading-normal" href="#">Careers</a>
+                        </div>
+                        <div class="flex flex-wrap justify-center gap-6">
+                            <!-- LinkedIn -->
+                            <a class="text-[#ccc28e] hover:text-primary transition-colors" href="#" target="_blank">
+                                <svg fill="currentColor" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"></path>
+                                </svg>
+                            </a>
+                            
+                            <!-- Next.js -->
+                            <a class="text-[#ccc28e] hover:text-primary transition-colors" href="#" target="_blank">
+                                <svg fill="currentColor" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M18.665 21.978C16.758 23.255 14.465 24 12 24 5.377 24 0 18.623 0 12S5.377 0 12 0s12 5.377 12 12c0 3.583-1.574 6.801-4.067 9.001L9.219 7.2H7.2v9.596h1.615V9.251l9.85 12.727zm-3.332-8.533 1.6 2.061V7.2h-1.6v6.245z"/>
+                                </svg>
+                            </a>
+                            
+                            <!-- GitHub -->
+                            <a class="text-[#ccc28e] hover:text-primary transition-colors" href="#" target="_blank">
+                                <svg fill="currentColor" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"></path>
+                                </svg>
+                            </a>
+                            
+                            <!-- TikTok -->
+                            <a class="text-[#ccc28e] hover:text-primary transition-colors" href="#" target="_blank">
+                                <svg fill="currentColor" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/>
+                                </svg>
+                            </a>
+                            
+                            <!-- Discord -->
+                            <a class="text-[#ccc28e] hover:text-primary transition-colors" href="#" target="_blank">
+                                <svg fill="currentColor" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M14.82 4.26a10.14 10.14 0 0 0-.53 1.1 14.66 14.66 0 0 0-4.58 0 10.14 10.14 0 0 0-.53-1.1 16 16 0 0 0-4.13 1.3 17.33 17.33 0 0 0-3 11.59 16.6 16.6 0 0 0 5.07 2.59A12.89 12.89 0 0 0 8.23 18a9.65 9.65 0 0 1-1.71-.83 3.39 3.39 0 0 0 .42-.33 11.66 11.66 0 0 0 10.12 0c.14.09.28.19.42.33a10.9 10.9 0 0 1-1.71.84 12.89 12.89 0 0 0 1.08 1.78 16.44 16.44 0 0 0 5.06-2.59 17.22 17.22 0 0 0-3-11.59 16.09 16.09 0 0 0-4.09-1.35zM8.68 14.81a1.94 1.94 0 0 1-1.8-2 1.93 1.93 0 0 1 1.8-2 1.93 1.93 0 0 1 1.8 2 1.93 1.93 0 0 1-1.8 2zm6.64 0a1.94 1.94 0 0 1-1.8-2 1.93 1.93 0 0 1 1.8-2 1.92 1.92 0 0 1 1.8 2 1.92 1.92 0 0 1-1.8 2z"/>
+                                </svg>
+                            </a>
+                        </div>
+                        <p class="text-[#ccc28e] text-sm font-normal leading-normal">© 2025 Xpectre Labs, Inc. All rights reserved.</p>
+                    </footer>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM loaded, initializing filters...');
+            
+            // Get DOM elements
+            const searchInput = document.getElementById('search-input');
+            const typeSelect = document.getElementById('type-select');
+            const dateSelect = document.getElementById('date-select');
+            const eventCards = document.querySelectorAll('.event-card');
+            
+            // Debug: Check if elements are found
+            console.log('Search input:', searchInput);
+            console.log('Type select:', typeSelect);
+            console.log('Date select:', dateSelect);
+            console.log('Event cards found:', eventCards.length);
+            
+            // Add event listeners for filtering
+            searchInput.addEventListener('input', filterEvents);
+            typeSelect.addEventListener('change', filterEvents);
+            dateSelect.addEventListener('change', filterEvents);
+            
+            // Filter events function
+            function filterEvents() {
+                console.log('Filtering events...');
+                
+                const searchTerm = searchInput.value.toLowerCase();
+                const selectedType = typeSelect.value;
+                const selectedDateRange = dateSelect.value;
+                
+                console.log('Search term:', searchTerm);
+                console.log('Selected type:', selectedType);
+                console.log('Selected date range:', selectedDateRange);
+                
+                let visibleCount = 0;
+                
+                eventCards.forEach(card => {
+                    const title = card.getAttribute('data-title').toLowerCase();
+                    const type = card.getAttribute('data-type');
+                    const dateStr = card.getAttribute('data-date');
+                    const date = new Date(dateStr);
+                    
+                    console.log(`Checking card: ${title}, type: ${type}, date: ${dateStr}`);
+                    
+                    // Check if card matches search term
+                    const matchesSearch = searchTerm === '' || 
+                                         title.includes(searchTerm) ||
+                                         card.textContent.toLowerCase().includes(searchTerm);
+                    
+                    // Check if card matches selected type
+                    const matchesType = selectedType === 'all' || type === selectedType;
+                    
+                    // Check if card matches selected date range
+                    const matchesDate = checkDateRange(date, selectedDateRange);
+                    
+                    console.log(`Matches - Search: ${matchesSearch}, Type: ${matchesType}, Date: ${matchesDate}`);
+                    
+                    // Show or hide card based on all filters
+                    if (matchesSearch && matchesType && matchesDate) {
+                        card.classList.remove('hidden-event');
+                        card.classList.add('visible-event');
+                        visibleCount++;
+                        console.log(`Showing card: ${title}`);
+                    } else {
+                        card.classList.add('hidden-event');
+                        card.classList.remove('visible-event');
+                        console.log(`Hiding card: ${title}`);
+                    }
+                });
+                
+                console.log(`Total visible events: ${visibleCount}`);
+                
+                // If no events match, show a message
+                showNoResultsMessage(visibleCount === 0);
+            }
+            
+            // Helper function to check if date matches selected range
+            function checkDateRange(date, range) {
+                const today = new Date();
+                today.setHours(0, 0, 0, 0); // Normalize to start of day
+                
+                // For debugging
+                console.log(`Checking date: ${date}, range: ${range}`);
+                
+                switch(range) {
+                    case 'all':
+                        return true;
+                    case 'this-month':
+                        // Check if event is in the current month and year
+                        return date.getMonth() === today.getMonth() && 
+                               date.getFullYear() === today.getFullYear();
+                    case 'next-quarter':
+                        // Next quarter: current quarter + 1
+                        const currentQuarter = Math.floor(today.getMonth() / 3);
+                        const nextQuarterStartMonth = (currentQuarter + 1) * 3;
+                        const nextQuarterStart = new Date(today.getFullYear(), nextQuarterStartMonth, 1);
+                        const nextQuarterEnd = new Date(today.getFullYear(), nextQuarterStartMonth + 3, 0);
+                        
+                        console.log(`Next quarter: ${nextQuarterStart} to ${nextQuarterEnd}`);
+                        
+                        return date >= nextQuarterStart && date <= nextQuarterEnd;
+                    case 'this-year':
+                        return date.getFullYear() === today.getFullYear();
+                    default:
+                        return true;
+                }
+            }
+            
+            // Function to show/hide no results message
+            function showNoResultsMessage(show) {
+                // Remove existing message if any
+                const existingMessage = document.getElementById('no-results-message');
+                if (existingMessage) {
+                    existingMessage.remove();
+                }
+                
+                if (show) {
+                    const message = document.createElement('div');
+                    message.id = 'no-results-message';
+                    message.className = 'col-span-full text-center py-8';
+                    message.innerHTML = `
+                        <p class="text-[#ccc28e] text-lg font-medium">No events match your search criteria.</p>
+                        <p class="text-[#ccc28e] text-sm mt-2">Try adjusting your filters or search term.</p>
+                    `;
+                    
+                    const eventsContainer = document.getElementById('events-container');
+                    eventsContainer.appendChild(message);
+                }
+            }
+            
+            // Initialize filters on page load
+            filterEvents();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Xpectre Labs - 3D Printing Services</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<link rel="icon" type="image/png" href="favicon.png" sizes="32x32">
+<script>tailwind.config = {darkMode: "class", theme: {extend: {colors: {primary: "#F4C753", "background-light": "#f8f7f6", "background-dark": "#221d10"}, fontFamily: {display: "Space Grotesk"}, borderRadius: {DEFAULT: "0.25rem", lg: "0.5rem", xl: "0.75rem", full: "9999px"}}}};</script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .horizontal-scrolling-gallery::-webkit-scrollbar {
+            height: 8px;
+        }
+        .horizontal-scrolling-gallery::-webkit-scrollbar-track {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+        }
+        .horizontal-scrolling-gallery::-webkit-scrollbar-thumb {
+            background-color: #f9d006;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="bg-background-dark font-display text-[#E0E0E0]">
+<div class="relative flex min-h-screen w-full flex-col group/design-root overflow-x-hidden">
+<div class="layout-container flex h-full grow flex-col">
+<div class="flex flex-1 justify-center">
+<div class="layout-content-container flex w-full max-w-6xl flex-1 flex-col">
+
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-primary/20 px-4 md:px-10 py-3">
+<div class="flex items-center gap-4 text-white">
+<div class="size-5 text-primary">
+    <img width="30px" src="./img/logoH.png" />
+</div>
+<h2 class="text-white text-lg font-bold leading-tight tracking-[-0.015em]">Xpectre Labs</h2>
+</div>
+<nav class="hidden md:flex flex-4 justify-end gap-8">
+    <div class="flex items-center gap-9">
+        <a class="text-white/80 text-sm font-medium leading-normal transition-colors hover:text-white" href="./index.html">Home</a>
+        <a class="text-primary text-sm font-medium leading-normal transition-colors" href="index.html#services">Services</a>
+        <a class="text-white hover:text-primary text-sm font-medium leading-normal transition-colors" href="#">About</a>
+        <a class="text-white hover:text-primary text-sm font-medium leading-normal transition-colors" href="./blog.html">Lab</a>
+        <a class="text-white hover:text-primary text-sm font-medium leading-normal transition-colors" href="./events.html">Events</a>
+    </div>
+    <div class="flex flex-1 justify-end">
+        <a class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-background-dark text-sm font-bold leading-normal tracking-[0.015em] transition-transform hover:scale-105" href="#contact">
+        <span class="truncate">Get a Quote</span>
+    </a>
+    </div>
+</nav>
+<button class="md:hidden text-white">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+</header>
+
+<main class="flex flex-col gap-16 py-10 sm:gap-20 sm:py-16">
+<section class="@container px-4" id="hero">
+<div class="@[480px]:p-4">
+<div class="flex min-h-[60vh] flex-col items-center justify-center gap-6 rounded-xl bg-cover bg-center bg-no-repeat p-4 text-center @[480px]:gap-8" data-alt="Abstract 3D printed lattice structure with glowing yellow accents." style='background-image: linear-gradient(rgba(18, 18, 18, 0.4) 0%, rgba(18, 18, 18, 0.7) 100%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuCU1SfkjPF7ypRgLUthw77XlnugOJMdudZ36IspeSpTxO9BYoHig1b9My3tdTTHVd2w-y8Qxj7-3RkoLvJEFsJaMk_gcmqIXhPwD2ll1JSuf8RLyXJAnG1jPLY-6gB3FubQjVu6_lEgf657qWROF01VnscLkSqRQ19L2xWg8xp6v6sAPA3xE3yqVlqiUkBWod31nleO44fM6FlHZDKPW6m7gvEeT7nXJQLM-eVuX9TqVcHCw5Zb_eHAj9XnAitGjLToXJk0EmP5MqU");'>
+<div class="flex flex-col gap-2">
+<h1 class="text-4xl font-black leading-tight tracking-[-0.033em] text-white @[480px]:text-5xl @[480px]:font-black @[480px]:leading-tight @[480px]:tracking-[-0.033em] xl:text-6xl">Advanced 3D Printing Services</h1>
+<h2 class="mx-auto max-w-2xl text-base font-normal leading-normal text-white/90 @[480px]:text-lg @[480px]:font-normal @[480px]:leading-normal">From rapid prototypes to production-grade parts, we transform digital designs into tangible reality with precision and speed.</h2>
+</div>
+<a class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg bg-primary h-12 px-5 text-base font-bold leading-normal tracking-[0.015em] text-background-dark transition-transform hover:scale-105" href="index.html#contact-form">
+    <span class="truncate">Start Your Project</span>
+</a>
+</div>
+</div>
+</section>
+<section class="flex flex-col gap-10 px-4 py-10 @container sm:px-10" id="process">
+<div class="flex flex-col gap-4 text-center">
+<h2 class="text-3xl font-bold leading-tight tracking-[-0.033em] text-white @[480px]:text-4xl @[480px]:font-black @[480px]:leading-tight @[480px]:tracking-[-0.033em]">Our Streamlined Process</h2>
+<p class="mx-auto max-w-[720px] text-base font-normal leading-normal text-white/80">A transparent, four-step journey from your concept to a high-quality physical part in your hands.</p>
+</div>
+<div class="relative grid grid-cols-1 gap-12 md:grid-cols-4">
+<div class="absolute left-0 top-1/2 hidden h-px w-full -translate-y-1/2 bg-white/10 md:block">
+<div class="absolute left-0 top-0 h-full w-full border-t-2 border-dashed border-white/20"></div>
+</div>
+<div class="relative flex flex-col items-center gap-4 text-center">
+<div class="flex h-16 w-16 items-center justify-center rounded-full border-2 border-primary bg-background-dark text-primary">
+<span class="material-symbols-outlined" style="font-size: 32px;">upload_file</span>
+</div>
+<h3 class="text-lg font-bold">1. Submit Your Design</h3>
+<p class="text-sm text-white/70">Upload your 3D model, specify materials and requirements, and receive an instant quote for your project.</p>
+</div>
+<div class="relative flex flex-col items-center gap-4 text-center">
+<div class="flex h-16 w-16 items-center justify-center rounded-full border-2 border-primary bg-background-dark text-primary">
+<span class="material-symbols-outlined" style="font-size: 32px;">checklist</span>
+</div>
+<h3 class="text-lg font-bold">2. Design Validation</h3>
+<p class="text-sm text-white/70">Our experts review your design for printability, ensuring optimal orientation and support structures.</p>
+</div>
+<div class="relative flex flex-col items-center gap-4 text-center">
+<div class="flex h-16 w-16 items-center justify-center rounded-full border-2 border-primary bg-background-dark text-primary">
+<span class="material-symbols-outlined" style="font-size: 32px;">precision_manufacturing</span>
+</div>
+<h3 class="text-lg font-bold">3. Printing &amp; Processing</h3>
+<p class="text-sm text-white/70">We utilize state-of-the-art printers and post-processing techniques to fabricate your part to exact specifications.</p>
+</div>
+<div class="relative flex flex-col items-center gap-4 text-center">
+<div class="flex h-16 w-16 items-center justify-center rounded-full border-2 border-primary bg-background-dark text-primary">
+<span class="material-symbols-outlined" style="font-size: 32px;">local_shipping</span>
+</div>
+<h3 class="text-lg font-bold">4. Quality &amp; Delivery</h3>
+<p class="text-sm text-white/70">After a thorough quality inspection, your finished parts are securely packaged and shipped directly to you.</p>
+</div>
+</div>
+</section>
+<section class="flex flex-col gap-10 px-4 py-10 @container sm:px-10" id="capabilities">
+<div class="flex flex-col gap-4">
+<h2 class="text-3xl font-bold leading-tight tracking-[-0.033em] text-white @[480px]:text-4xl @[480px]:font-black @[480px]:leading-tight @[480px]:tracking-[-0.033em]">Our Capabilities</h2>
+<p class="max-w-[720px] text-base font-normal leading-normal text-white/80">We offer a versatile range of 3D printing services tailored to your specific application and industry needs.</p>
+</div>
+<div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+<div class="flex flex-1 flex-col gap-3 rounded-xl border border-white/10 bg-white/5 p-6 transition-all hover:border-primary/50 hover:bg-primary/10">
+<span class="material-symbols-outlined text-primary" style="font-size: 32px;">science</span>
+<div class="flex flex-col gap-1">
+<h3 class="text-lg font-bold leading-tight text-white">Rapid Prototyping</h3>
+<p class="text-sm font-normal leading-normal text-white/70">Quickly iterate on designs, test form and function, and accelerate your product development cycle.</p>
+</div>
+</div>
+<div class="flex flex-1 flex-col gap-3 rounded-xl border border-white/10 bg-white/5 p-6 transition-all hover:border-primary/50 hover:bg-primary/10">
+<span class="material-symbols-outlined text-primary" style="font-size: 32px;">construction</span>
+<div class="flex flex-col gap-1">
+<h3 class="text-lg font-bold leading-tight text-white">Custom Part Manufacturing</h3>
+<p class="text-sm font-normal leading-normal text-white/70">Produce high-strength, end-use parts, custom jigs, fixtures, and tooling with our industrial-grade printers.</p>
+</div>
+</div>
+<div class="flex flex-1 flex-col gap-3 rounded-xl border border-white/10 bg-white/5 p-6 transition-all hover:border-primary/50 hover:bg-primary/10">
+<span class="material-symbols-outlined text-primary" style="font-size: 32px;">view_quilt</span>
+<div class="flex flex-col gap-1">
+<h3 class="text-lg font-bold leading-tight text-white">Small-Batch Production</h3>
+<p class="text-sm font-normal leading-normal text-white/70">An economical solution for low-volume production runs, bridging the gap between prototyping and mass manufacturing.</p>
+</div>
+</div>
+</div>
+</section>
+<section class="flex flex-col gap-6 px-4 sm:px-10" id="materials">
+<div class="flex flex-col gap-4">
+<h2 class="text-3xl font-bold leading-tight tracking-[-0.015em] text-white">Material Science at the Core</h2>
+<p class="max-w-[720px] text-base font-normal leading-normal text-white/80">Choose from a wide array of advanced materials, each with unique properties to suit your project's demands.</p>
+</div>
+<div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+<div class="group relative col-span-1 flex flex-col gap-3 overflow-hidden rounded-xl border border-white/10 bg-white/5 p-6">
+<div class="flex flex-col gap-1">
+<h3 class="text-lg font-bold leading-tight text-primary">Standard Thermoplastics</h3>
+<p class="text-sm font-bold text-white/90">PLA, ABS, PETG</p>
+<p class="text-sm font-normal leading-normal text-white/70">Ideal for general-purpose prototyping, concept models, and non-functional parts. Cost-effective and versatile.</p>
+</div>
+</div>
+<div class="group relative col-span-1 flex flex-col gap-3 overflow-hidden rounded-xl border border-white/10 bg-white/5 p-6">
+<div class="flex flex-col gap-1">
+<h3 class="text-lg font-bold leading-tight text-primary">Engineering Polymers</h3>
+<p class="text-sm font-bold text-white/90">Nylon, Polycarbonate, TPU</p>
+<p class="text-sm font-normal leading-normal text-white/70">High-performance materials offering superior strength, flexibility, and heat resistance for functional parts and tooling.</p>
+</div>
+</div>
+<div class="group relative col-span-1 flex flex-col gap-3 overflow-hidden rounded-xl border border-white/10 bg-white/5 p-6 md:col-span-2 lg:col-span-1">
+<div class="flex flex-col gap-1">
+<h3 class="text-lg font-bold leading-tight text-primary">Advanced Composites</h3>
+<p class="text-sm font-bold text-white/90">Carbon Fiber-filled, Glass-filled</p>
+<p class="text-sm font-normal leading-normal text-white/70">Reinforced filaments for creating exceptionally strong, stiff, and lightweight components, comparable to machined aluminum.</p>
+</div>
+</div>
+</div>
+</section>
+<section class="flex flex-col gap-10 py-10 @container" id="gallery">
+<div class="flex flex-col gap-4 px-4 text-center sm:px-10">
+<h2 class="text-3xl font-bold leading-tight tracking-[-0.033em] text-white @[480px]:text-4xl @[480px]:font-black @[480px]:leading-tight @[480px]:tracking-[-0.033em]">Printed Prototype Gallery</h2>
+<p class="mx-auto max-w-[720px] text-base font-normal leading-normal text-white/80">Explore a selection of high-fidelity parts and complex geometries we've brought to life for our clients.</p>
+</div>
+<div class="horizontal-scrolling-gallery flex w-full snap-x snap-mandatory scroll-pl-10 items-start gap-4 overflow-x-auto pb-6 pl-4 pr-10 pt-4 sm:pl-10">
+<div class="flex w-72 flex-none snap-center flex-col gap-3 rounded-xl border border-white/10 bg-white/5 p-3 sm:w-80">
+<div class="aspect-square w-full overflow-hidden rounded-lg">
+<img alt="Intricate white 3D printed mechanical gear set on a dark background." class="h-full w-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDuJau39Vh0dg7GGu7mdHRQL1LQxuAFJf77WTk-7swicLshFNa7vnMDcEzrhksPFSE9eIwVygXJmRlK-HPOBffFghYgncOL9yDQ_2jEKSbEFn_1pz6U6jGDJiLeZRkI5bi2sQ3cUJ3Ysy3mURMwWZo6EiMUoOEF6TGjE_VYws8GE3CaJilleA8w-BRP3UsjcqKEqBdrBx76vRLb_LS9KKJJqL1E0wLMCBaYq-yrEqbGFAk6GFR0xwvXJr0Te1YnNhodoGHRZ-PH3AE"/>
+</div>
+</div>
+<div class="flex w-72 flex-none snap-center flex-col gap-3 rounded-xl border border-white/10 bg-white/5 p-3 sm:w-80">
+<div class="aspect-square w-full overflow-hidden rounded-lg">
+<img alt="Detailed 3D printed yellow turbine engine prototype." class="h-full w-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCoV-jhIrPYn3zM-VJr55oT3iHtekjnjrbWtDLoIR9g7lFSu9hDTXmWKJpHUCtNhlBb5a91suVubL9IFfQr0-wVBpBlOF0KsCwUtiawjCfkTyMhaZ5Swk4CXQ8WjjWj_QncS57d0rkVzyoer7s6lAL7_MFBlH2sCva59wMGU8ReGwoWO2EMd1NAzQAEK-Nsi0oHr9CAA0e_cRbu-Isa8isl3o_2J9YOMJcfaZ94FQJi9nzquqkM0rKzvckmTvGHCSDWJO_HdnuJL60"/>
+</div>
+</div>
+<div class="flex w-72 flex-none snap-center flex-col gap-3 rounded-xl border border-white/10 bg-white/5 p-3 sm:w-80">
+<div class="aspect-square w-full overflow-hidden rounded-lg">
+<img alt="A collection of black carbon fiber reinforced 3D printed parts for a drone." class="h-full w-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAr6Dqium_4ovcG1vcGbA7Edxew2gY4eu9i0rJNwolpbRnqJ9ReGsMFjxHDMJviqek3Egp_8ZLfnTLlQeh8f65bAY4Mg3eVDIZAxiqo1UKfF-jG8Ll65Dw8hAOR4Ds1o2WX3_iyVtjq5VYdqrMWOrxOHK6LnCd7YzjwEAwVZf1fGgU_ld0Qkxf-MeGDvP2RGIAFxHvLz3dHShr4L1b9BsX6mP1eda1O_XMKVTeUzfyzy0oERQtLwTSSujrVcEwWxQNtcFr9v405RpM"/>
+</div>
+</div>
+<div class="flex w-72 flex-none snap-center flex-col gap-3 rounded-xl border border-white/10 bg-white/5 p-3 sm:w-80">
+<div class="aspect-square w-full overflow-hidden rounded-lg">
+<img alt="Flexible 3D printed lattice structure in a vibrant blue TPU material." class="h-full w-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA_LUlBnxguokKfFhr-p6V92K2MHIbwF203OEhGqj3FDYpU21hzWnckF5o9fxFQ-FpSuprYYZCxolW3m4ASvR78Wsq-RjpKpNjuWywNfkiPaw82iJwfUTADr-0e01Mtc_w_p96D7MBJV49Vr5ixONm720eQZeGafvMBz1pCz0zHRBuzDrE6EAGvZwDI6Exwmc4ZD3MXz1-9KkqoDuWKe8z1-IDX0FcETxdCCUWk6GamML6F-0jy_XcN8-UgTKvdq3infBFCKf0l9Gk"/>
+</div>
+</div>
+<div class="flex w-72 flex-none snap-center flex-col gap-3 rounded-xl border border-white/10 bg-white/5 p-3 sm:w-80">
+<div class="aspect-square w-full overflow-hidden rounded-lg">
+<img alt="Smooth, detailed architectural model of a futuristic building, 3D printed in white resin." class="h-full w-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCxlmhuUZ3lKBTZb8VZ4xC8MFwppFeGg-1clagT3oAF3osvLdsZizW382AkT0EnSAhaQuKQ17dPbvJoW317bIvSpiqtwYANTjrWWqNJhvX20H3PbubD0TA5yOvN2Fs8Uo8bCZfmuxlJ1gosh5Z2Xcz1oO41lqPTfWaeS-MtayGzzKTZpb8spR4rWmDTHUQpZ4K33qN9tyLjykcmBCm11eD0d--wI05fX-fQC9iRR3VPzvUCpU-IAtgMb8rhlfHOkyFzHrEYuKiwHvc"/>
+</div>
+</div>
+<div class="flex w-72 flex-none snap-center flex-col gap-3 rounded-xl border border-white/10 bg-white/5 p-3 sm:w-80">
+<div class="aspect-square w-full overflow-hidden rounded-lg">
+<img alt="Custom 3D printed prosthetic hand with functional joints." class="h-full w-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD4MOMklNJtgLOWubar1f7TbRRx7NwS5yqnjDSlwMJsxy7RY-HKcLm9umL0_d5ct0mpATPUA-HSVZ8GLZFLHePklNoNj8cyyuoP-SsFIqd5GYG8MQfqYroog28wHgZ3LR_4WAtZAnVOpPNV0Y2-NkPkRg3Z4PeYdrlt7OqPx0umdMCKjlkMo0yLa-0iAqyfHFSRPNCjnh2BKPr1ch6ychdbhZOm2ZXGCTj7f4VcLXGgpbkcPNmWry0PFIthgM7_XbpdWb34WvXqdvg"/>
+</div>
+</div>
+</div>
+<div class="mt-8 flex justify-center px-4 sm:px-10">
+<a class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg bg-primary h-12 px-6 text-base font-bold leading-normal tracking-[0.015em] text-background-dark transition-transform hover:scale-105" href="index.html#contact-form">
+    <span class="truncate">Request a Quote</span>
+</a>
+</div>
+</section>
+<section class="px-4 @container sm:px-10" id="contact">
+<div class="flex flex-col items-center justify-center gap-6 rounded-xl bg-gradient-to-br from-primary/20 to-primary/5 p-8 text-center sm:p-12">
+<h2 class="text-3xl font-bold leading-tight tracking-[-0.033em] text-white @[480px]:text-4xl @[480px]:font-black @[480px]:leading-tight @[480px]:tracking-[-0.033em]">Have a Project in Mind?</h2>
+<p class="mx-auto max-w-xl text-base leading-normal text-white/80">Let's turn your digital files into high-quality physical parts. Get an instant quote or consult with our engineers to find the perfect solution for your needs.</p>
+<a href="index.html#contact-form" class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg bg-primary h-12 px-5 text-base font-bold leading-normal tracking-[0.015em] text-background-dark transition-transform hover:scale-105">
+    <span class="truncate">Get an Instant Quote</span>
+</a>
+</div>
+</section>
+</main>
+<footer class="mt-auto border-t border-white/10 bg-background-dark px-4 py-8 sm:px-10">
+<div class="flex flex-col items-center justify-between gap-6 md:flex-row">
+<div class="flex flex-col items-center gap-4 text-center md:flex-row md:items-start md:text-left">
+<div class="flex items-center gap-2">
+<div class="h-6 w-6 text-primary">
+<img width="30px" src="./img/logoH.png" />
+</div>
+<h3 class="text-md font-bold text-white">Xpectre Labs</h3>
+</div>
+<div class="flex flex-col gap-4 text-sm text-white/60 md:flex-row md:gap-6">
+<p>© 2024. All Rights Reserved.</p>
+<div class="flex justify-center gap-6">
+<a class="transition-colors hover:text-primary" href="#">Privacy Policy</a>
+<a class="transition-colors hover:text-primary" href="#">Terms of Service</a>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-4">
+    <!-- LinkedIn -->
+    <a aria-label="LinkedIn" class="text-white/60 transition-colors hover:text-primary" href="#" target="_blank">
+        <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"></path>
+        </svg>
+    </a>
+    
+    <!-- Next.js -->
+    <a aria-label="Next.js" class="text-white/60 transition-colors hover:text-primary" href="#" target="_blank">
+        <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M18.665 21.978C16.758 23.255 14.465 24 12 24 5.377 24 0 18.623 0 12S5.377 0 12 0s12 5.377 12 12c0 3.583-1.574 6.801-4.067 9.001L9.219 7.2H7.2v9.596h1.615V9.251l9.85 12.727zm-3.332-8.533 1.6 2.061V7.2h-1.6v6.245z"/>
+        </svg>
+    </a>
+    
+    <!-- GitHub -->
+    <a aria-label="GitHub" class="text-white/60 transition-colors hover:text-primary" href="#" target="_blank">
+        <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"></path>
+        </svg>
+    </a>
+    
+    <!-- TikTok -->
+    <a aria-label="TikTok" class="text-white/60 transition-colors hover:text-primary" href="#" target="_blank">
+        <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/>
+        </svg>
+    </a>
+    
+    <!-- Discord -->
+    <a aria-label="Discord" class="text-white/60 transition-colors hover:text-primary" href="#" target="_blank">
+        <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M14.82 4.26a10.14 10.14 0 0 0-.53 1.1 14.66 14.66 0 0 0-4.58 0 10.14 10.14 0 0 0-.53-1.1 16 16 0 0 0-4.13 1.3 17.33 17.33 0 0 0-3 11.59 16.6 16.6 0 0 0 5.07 2.59A12.89 12.89 0 0 0 8.23 18a9.65 9.65 0 0 1-1.71-.83 3.39 3.39 0 0 0 .42-.33 11.66 11.66 0 0 0 10.12 0c.14.09.28.19.42.33a10.9 10.9 0 0 1-1.71.84 12.89 12.89 0 0 0 1.08 1.78 16.44 16.44 0 0 0 5.06-2.59 17.22 17.22 0 0 0-3-11.59 16.09 16.09 0 0 0-4.09-1.35zM8.68 14.81a1.94 1.94 0 0 1-1.8-2 1.93 1.93 0 0 1 1.8-2 1.93 1.93 0 0 1 1.8 2 1.93 1.93 0 0 1-1.8 2zm6.64 0a1.94 1.94 0 0 1-1.8-2 1.93 1.93 0 0 1 1.8-2 1.92 1.92 0 0 1 1.8 2 1.92 1.92 0 0 1-1.8 2z"/>
+        </svg>
+    </a>
+</div>
+</div>
+</footer>
+</div>
+</div>
+</div>
+</div>
+</body></html>

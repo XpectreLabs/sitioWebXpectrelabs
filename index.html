@@ -54,6 +54,7 @@
     
     </script>
     
+    
     <style>
         body {
             font-family: 'PT Sans', sans-serif;
@@ -62,7 +63,7 @@
             position: relative;
         }
         .octopus-watermark {
-            top: 5%;
+            position: absolute;
             top: 20%;
             left: 50%;
             transform: translateX(-50%);
@@ -210,19 +211,29 @@
     <div class="container mx-auto px-4 sm:px-6 lg:px-8 content-wrapper">
         <header class="flex justify-between items-center py-6">
             <div class="flex items-center space-x-3">
-                <div class="bg-primary/10 border-0 border-primary/30 p-2 rounded">
+                <a href="./index.html" class="bg-primary/10 border-0 border-primary/30 p-2 rounded">
                     <span class="material-icons text-primary text-xl"><img width="30px" src="./img/logoH.png" /></span>
-                </div>
+                </a>
                 <span class="font-heading font-bold text-xl text-text-primary">Xpectre Labs</span>
             </div>
-            <button class="md:hidden text-text-primary">
-                <span class="material-icons">menu</span>
+           <button id="mobileMenuBtn" class="lg:hidden flex items-center justify-center w-10 h-10 text-white hover:text-primary transition-colors">
+<span class="material-symbols-outlined">menu</span>
             </button>
-            <nav class="hidden md:flex items-center space-x-8">
+            <nav class="hidden lg:flex items-center space-x-8">
                 <a class="font-heading text-sm font-medium text-text-secondary hover:text-primary transition-colors" href="index.html#services">Services</a>
-                <a class="font-heading text-sm font-medium text-text-secondary hover:text-primary transition-colors" href="#">About</a>
-                <a class="font-heading text-sm font-medium text-text-secondary hover:text-primary transition-colors" href="./blog.html">Lab</a>
-                <a class="font-heading text-sm font-medium text-text-secondary hover:text-primary transition-colors" href="./events.html">Events</a>
+                <a class="font-heading text-sm font-medium text-text-secondary hover:text-primary transition-colors" href="./services-dev.html">Dev</a>
+                <a class="font-heading text-sm font-medium text-text-secondary hover:text-primary transition-colors" href="./services-staff.html">Staff Augmentation</a>
+                <a class="font-heading text-sm font-medium text-text-secondary hover:text-primary transition-colors" href="./services-3D.html">3D Prototyping</a>
+            </nav>
+<!-- Mobile Menu -->
+<nav id="mobileMenu" class="hidden lg:hidden fixed top-[60px] left-0 right-0 bg-background-dark/95 backdrop-blur-sm border-b border-white/10 z-40 max-h-[calc(100vh-60px)] overflow-y-auto">
+<div class="flex flex-col gap-1 p-4 sm:p-6">
+    <a class="text-primary text-sm font-medium leading-normal transition-colors hover:text-white hover:bg-white/5 rounded-lg px-4 py-3" href="./index.html">Home</a>
+    <a class="text-white/80 text-sm font-medium leading-normal transition-colors hover:text-white hover:bg-white/5 rounded-lg px-4 py-3" href="index.html#services">Services</a>
+    <a class=" text-sm font-medium leading-normal hover:text-primary transition-colors hover:bg-white/5 rounded-lg px-4 py-3" href="./services-dev.html">Dev</a>
+    <a class="text-white/80 text-sm font-medium leading-normal transition-colors hover:text-white hover:bg-white/5 rounded-lg px-4 py-3" href="./services-staff.html">Staff Augmentation</a>
+    <a class="text-white/80 text-sm font-medium leading-normal transition-colors hover:text-white hover:bg-white/5 rounded-lg px-4 py-3" href="./services-3D.html">3D Prototyping</a>
+</div>
             </nav>
         </header>
         <main class="py-24 md:py-32 text-center">
@@ -846,6 +857,31 @@
         document.addEventListener('touchmove', function(e) {
         // Forzar que los eventos táctiles siempre se procesen  
         }, { passive: true });
+        </script>
+        <script>
+document.addEventListener('DOMContentLoaded', function() {
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    mobileMenuBtn.addEventListener('click', function() {
+        mobileMenu.classList.toggle('hidden');
+    });
+
+    // Close menu when a link is clicked
+    const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+    mobileMenuLinks.forEach(link => {
+        link.addEventListener('click', function() {
+            mobileMenu.classList.add('hidden');
+        });
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', function(event) {
+        if (!event.target.closest('#mobileMenuBtn') && !event.target.closest('#mobileMenu')) {
+            mobileMenu.classList.add('hidden');
+        }
+    });
+});
         </script>
 </body>
 </html>

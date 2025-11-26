@@ -4,7 +4,6 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Xpectre Labs - 3D Printing Services</title>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
@@ -110,28 +109,38 @@
 <div class="layout-content-container flex w-full max-w-6xl flex-1 flex-col">
 
 <header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-primary/20 px-4 md:px-10 py-3">
-<div class="flex items-center gap-4 text-white">
+<a href="./index.html" class="flex items-center gap-4 text-white">
 <div class="size-5 text-primary">
     <img width="30px" src="./img/logoH.png" />
 </div>
 <h2 class="text-white text-lg font-bold leading-tight tracking-[-0.015em]">Xpectre Labs</h2>
-</div>
-<nav class="hidden md:flex flex-4 justify-end gap-8">
+</a>
+<nav class="hidden lg:flex flex-4 justify-end gap-8">
     <div class="flex items-center gap-9">
-        <a class="text-white/80 text-sm font-medium leading-normal transition-colors hover:text-white" href="./index.html">Home</a>
-        <a class="text-primary text-sm font-medium leading-normal transition-colors" href="index.html#services">Services</a>
-        <a class="text-white hover:text-primary text-sm font-medium leading-normal transition-colors" href="#">About</a>
-        <a class="text-white hover:text-primary text-sm font-medium leading-normal transition-colors" href="./blog.html">Lab</a>
-        <a class="text-white hover:text-primary text-sm font-medium leading-normal transition-colors" href="./events.html">Events</a>
+          <a class="text-white/80 text-sm font-medium leading-normal transition-colors hover:text-white" href="./index.html">Home</a>
+     <a class="font-heading text-sm font-medium text-text-secondary hover:text-primary transition-colors" href="index.html#services">Services</a>
+                <a class="font-heading text-text-secondary text-sm font-medium  hover:text-primary transition-colors" href="./services-dev.html">Dev</a>
+                <a class="font-heading  text-text-secondary text-sm font-medium  hover:text-primary transition-colors" href="./services-staff.html">Staff Augmentation</a>
+                <a class="font-heading text-sm font-medium text-primary hover:text-primary transition-colors" href="./services-3D.html">3D Prototyping</a>
     </div>
     <div class="flex flex-1 justify-end">
-        <a class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-background-dark text-sm font-bold leading-normal tracking-[0.015em] transition-transform hover:scale-105" href="#contact">
+        <a class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-background-dark text-sm font-bold leading-normal tracking-[0.015em] transition-transform hover:scale-105" href="index.html#contact-form">
         <span class="truncate">Get a Quote</span>
     </a>
     </div>
 </nav>
-<button class="md:hidden text-white">
-<span class="material-symbols-outlined" data-icon="menu">menu</span>
+<button id="mobileMenuBtn" class="lg:hidden flex items-center justify-center w-10 h-10 text-white hover:text-primary transition-colors">
+    <!-- Mobile Menu -->
+<nav id="mobileMenu" class="hidden lg:hidden fixed top-[60px] left-0 right-0 bg-background-dark/95 backdrop-blur-sm border-b border-white/10 z-40 max-h-[calc(100vh-60px)] overflow-y-auto">
+<div class="flex flex-col gap-1 p-4 sm:p-6">
+    <a class=" text-sm font-medium leading-normal transition-colors hover:text-white hover:bg-white/5 rounded-lg px-4 py-3" href="./index.html">Home</a>
+    <a class="text-white/80 text-sm font-medium leading-normal transition-colors hover:text-white hover:bg-white/5 rounded-lg px-4 py-3" href="index.html#services">Services</a>
+    <a class=" text-sm font-medium leading-normal hover:text-primary transition-colors hover:bg-white/5 rounded-lg px-4 py-3" href="./services-dev.html">Dev</a>
+    <a class="text-sm font-medium leading-normal transition-colors hover:text-white hover:bg-white/5 rounded-lg px-4 py-3" href="./services-staff.html">Staff Augmentation</a>
+    <a class="text-primary  text-sm font-medium leading-normal transition-colors hover:text-white hover:bg-white/5 rounded-lg px-4 py-3" href="./services-3D.html">3D Prototyping</a>
+</div>
+</nav>
+<span class="material-symbols-outlined">menu</span>
 </button>
 </header>
 
@@ -358,4 +367,30 @@
 </div>
 </div>
 </div>
-</body></html>
+</body>
+ <script>
+document.addEventListener('DOMContentLoaded', function() {
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    mobileMenuBtn.addEventListener('click', function() {
+        mobileMenu.classList.toggle('hidden');
+    });
+
+    // Close menu when a link is clicked
+    const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+    mobileMenuLinks.forEach(link => {
+        link.addEventListener('click', function() {
+            mobileMenu.classList.add('hidden');
+        });
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', function(event) {
+        if (!event.target.closest('#mobileMenuBtn') && !event.target.closest('#mobileMenu')) {
+            mobileMenu.classList.add('hidden');
+        }
+    });
+});
+</script>
+</html>

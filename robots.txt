@@ -1,0 +1,6 @@
+<!-- filepath: /Users/mengeroshipro/Desktop/sitioWebXpectrelabs/robots.txt -->
+User-agent: *
+Allow: /
+Disallow: /img/
+Disallow: /admin/
+Sitemap: https://xpectrelabs.com/sitemap.xml
